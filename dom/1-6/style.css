@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+table {
+    text-align: left;
+    position: relative;
+    border-collapse: collapse; 
+    background-color: #f6f6f6;
+  }/* Spacing */
+  td, th {
+    border: 1px solid #000000;
+    padding: 20px;
+  }
+  th {
+    background: #000000;
+    color: white;
+    border-radius: 0;
+    position: sticky;
+    top: 0;
+    padding: 10px;
+  }
+ 
+  
+  tfoot > tr  {
+    background: black;
+    color: white;
+  }
+  tbody > tr:hover {
+    background-color: #ffc107;
+  }

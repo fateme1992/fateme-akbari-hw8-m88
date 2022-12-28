@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+
+body {
+    background-color: #c2cbc2;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    font-family: 'v', serif;
+}
+
+.container {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+}
