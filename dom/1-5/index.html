@@ -5,41 +5,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&family=Noto+Nastaliq+Urdu&family=Vazirmatn:wght@500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&family=Noto+Nastaliq+Urdu&family=Vazirmatn:wght@500&display=swap');
+    </style>
+
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 
 <body id="body">
     <div class="container">
-        <div class="d-flex">
-            <label for="">نام کاربری</label>
-            <div>
-    
-                <input type="text" placeholder="نام کاربری">
-                <div>الزامی</div>
-            </div>
-    
-        </div>
-    
-        <div class="d-flex">
-            <label for="">رمز عبور</label>
-            <div>
-    
-                <input type="text" placeholder="رمز عبور">
-                <div>الزامی</div>
-            </div>
-        </div>
-    
-    
-        <div class="d-flex">
-            <label for="">تکرار رمز عبور</label>
-            <div>
-    
-                <input type="text" placeholder="تکرار رمز عبور">
-                <div>با رمز عبور مطابقت ندارد</div>
-            </div>
-        </div>
+        <table>
+            <tr>
+                <th class="d-flex">
+                    <label>نام کاربری</label>
+                </th>
+                <td>
+                    <div>
+                        <input class="userName" type="text" placeholder="نام کاربری">
+                        <div id="eName" class="mb-1"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="d-flex">
+                    <label for="">رمز عبور</label>
+                </th>
+                <td>
+                    <div>
+                        <input class="pass" type="text" placeholder="رمز عبور">
+                        <div id="ePass" class="mb-1"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="d-flex">
+                    <label for="">تکرار رمز عبور</label>
+                </th>
+                <td>
+                    <div>
+                        <input class="confirm" type="text" placeholder="تکرار رمز عبور">
+                        <div id="eConfirm" class="mb-1">
+                            <!-- با رمز عبور مطابقت ندارد -->
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <button>ثبت نام</button>
+                </th>
+
+            </tr>
+            <tr>
+            </tr>
+        </table>
     </div>
+
+
+
 
 </body>
 <script src="main.js"></script>

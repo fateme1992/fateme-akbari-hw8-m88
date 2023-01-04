@@ -10,66 +10,55 @@
 </head>
 
 <body>
-    <main>
-        <table id="table">
-            <thead id="thead">
-                <tr>
-                    <th id="uid">uid</th>
-                    <th id="firstname">firstname</th>
-                    <th id="lastname">lastname</th>
-                    <th id="city">city</th>
-                    <th id="postalCode">postalCode</th>
-                    <th id="phoneNumber">phoneNumber</th>
-                    <th id="position">position</th>
-                </tr>
-            </thead>
-            <tbody>
+    <div class="container">
 
-            </tbody>
-        </table>
-        <div>
-            <button>edit</button>
-            <button>Add</button>
-        </div>
-        <div id="form" onsubmit="onFormSubmit()">
-            <div>
-                <label for="uid">uid:</label>
-                <input type="text" id="uid">
-            </div>
-            <div>
-                <label for="firstname">first name:</label>
-                <input type="text" id="firstname">
-            </div>
-            <div>
-                <label for="lastname">last name:</label>
-                <input type="text" id="lastname">
-            </div>
-            <div>
-                <label for="city">city:</label>
-                <input type="text" id="city">
-            </div>
-            <div>
-                <label for="postalCode">postal code:</label>
-                <input type="text" id="postalCode">
-            </div>
-            <div>
-                <label for="phoneNumber">phone number:</label>
-                <input type="text" id="phoneNumber">
-            </div>
-            <div>
-                <label for="position">position:</label>
-                <input type="text" id="position">
-            </div>
-            <div>
-                <button value="submit">submit</button>
-            </div>
-        </div>
-    </main>
+        <main>
+            <table id="table">
+                <thead id="thead"></thead>
+                <tbody id="user-list"></tbody>
+            </table>
 
+            <div id="user-form">
+                <div>
+                    <button class="edit">edit</button>
+                    <button class="delete">delete</button>
+                </div>
+                <div>
+                    <label for="uid">uid:</label>
+                    <input type="text" class="uid">
+                </div>
+                <div>
+                    <label for="firstname">first name:</label>
+                    <input type="text" class="firstname">
+                </div>
+                <div>
+                    <label for="lastname">last name:</label>
+                    <input type="text" class="lastname">
+                </div>
+                <div>
+                    <label for="city">city:</label>
+                    <input type="text" class="city">
+                </div>
+                <div>
+                    <label for="postalCode">postal code:</label>
+                    <input type="text" class="postalCode">
+                </div>
+                <div>
+                    <label for="phoneNumber">phone number:</label>
+                    <input type="text" class="phoneNumber">
+                </div>
+                <div>
+                    <label for="position">position:</label>
+                    <input type="text" class="position">
+                </div>
+                <div>
+                    <button class="submit" value="submit">submit</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="user-data.js"></script>
+    <script src="main.js"></script>
 </body>
-
-<!-- <script src="user-data.js"></script>
-<script src="main.js"></script> -->
-<script src="maincopy.js"></script>
 
 </html>

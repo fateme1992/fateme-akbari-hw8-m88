@@ -2,10 +2,18 @@
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
+    font-family: 'Noto Naskh Arabic', serif;
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-family: 'Vazirmatn', sans-serif;
 }
+
 
 .d-flex {
     display: flex;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
 }
 
 
@@ -27,5 +35,23 @@ body {
     justify-content: center;
     align-items: center;
     margin: auto;
+}
 
+th {
+    margin-left: 1rem;
+}
+
+input {
+    padding: 4px;
+    border: none;
+    border-bottom: 1px solid #000;
+}
+
+button {
+    padding: 4px 16px;
+}
+
+#eName , #ePass, #eConfirm {
+    font-size: 10px;
+    color: red;
 }

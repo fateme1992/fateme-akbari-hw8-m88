@@ -1,33 +1,98 @@
 * {
-    box-sizing: border-box;
-    padding: 0px;
-    margin: 0px;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+}
+
+main {
+  position: relative;
 }
 
 table {
-    text-align: left;
-    position: relative;
-    border-collapse: collapse; 
-    background-color: #f6f6f6;
-  }/* Spacing */
-  td, th {
-    border: 1px solid #000000;
-    padding: 20px;
-  }
-  th {
-    background: #000000;
-    color: white;
-    border-radius: 0;
-    position: sticky;
-    top: 0;
-    padding: 10px;
-  }
- 
-  
-  tfoot > tr  {
-    background: black;
-    color: white;
-  }
-  tbody > tr:hover {
-    background-color: #ffc107;
-  }
+  text-align: left;
+  position: relative;
+  border-collapse: collapse;
+  background-color: #f6f6f6;
+}
+
+/* Spacing */
+td,
+th {
+  border: 1px solid #000000;
+  padding: 20px;
+}
+
+th {
+  background: #000000;
+  color: white;
+  border-radius: 0;
+  position: sticky;
+  top: 0;
+  padding: 10px;
+}
+
+
+tfoot>tr {
+  background: black;
+  color: white;
+}
+
+tbody>tr:hover {
+  background-color: #ffc107;
+}
+
+thead>tr {
+  background-color: #000000;
+  color: #fff;
+
+}
+
+thead>tr>td {
+  border: 1px solid #fff !important;
+
+}
+
+tbody>tr:nth-of-type(odd) {
+  background-color: #ccc;
+}
+
+.edit,
+.delete {
+  padding: 4px 8px;
+}
+
+.edit {
+  margin-right: 4px;
+  background-color: rgb(53, 180, 53);
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid rgb(53, 180, 53);
+}
+
+.delete {
+  background-color: rgb(246, 58, 58);
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid rgb(246, 58, 58);
+}
+
+
+#user-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  background-color: rgb(167, 173, 173);
+  margin: 1rem auto;
+  padding: 2rem;
+}
