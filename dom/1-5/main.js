@@ -14,18 +14,18 @@ pass.addEventListener('keyup', function (e) {
     let passValue = pass.value;
 
 
-    for (let i = 0; i < passValue.length; i++) {
-        pass.value = passValue.replace(passValue[i], '.')
-    }
+    // for (let i = 0; i < passValue.length; i++) {
+    //     pass.value = passValue.replace(passValue[i], '.')
+    // }
 
 
 })
 
 confirm.addEventListener('keyup', function (e) {
     let confirmValue = confirm.value;
-    for (let i = 0; i < confirmValue.length; i++) {
-        confirm.value = confirmValue.replace(confirmValue[i], '.')
-    }
+    // for (let i = 0; i < confirmValue.length; i++) {
+    //     confirm.value = confirmValue.replace(confirmValue[i], '.')
+    // }
 })
 
 register.onclick = function () {
@@ -52,14 +52,14 @@ register.onclick = function () {
         eConfirm.innerHTML = "*با رمز عبور مطابقت ندارد"
     }
 
-    // if (pass.value.length < 8) {
-    //     ePass.innerHTML = "*رمز عبور باید حداقل شامل 8 کاراکتر و شامل حداقل یک حرف و یک عدد باشد"
-    // }
-
-
-    if (regularExpression.test(pass.value)) {
-        alert("password should contain atleast one number and one special character");
+    if (pass.value.length < 8) {
+        ePass.innerHTML = "*رمز عبور باید حداقل شامل 8 کاراکتر و شامل حداقل یک حرف و یک عدد باشد"
     }
+
+
+    // if (regularExpression.test(pass.value)) {
+    //     alert("password should contain atleast one number and one special character");
+    // }
 
 
 }

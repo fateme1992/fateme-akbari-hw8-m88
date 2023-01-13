@@ -5,8 +5,6 @@ body.style.justifyContent = 'center'
 body.style.alignItems = 'center'
 
 
-
-
 let div = document.createElement('div')
 body.appendChild(div)
 div.style.width = '50%'

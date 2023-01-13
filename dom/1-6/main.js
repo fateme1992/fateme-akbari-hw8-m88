@@ -18,6 +18,7 @@ let edit = document.querySelector('.edit');
 let deleteBtn = document.querySelector('.delete')
 
 
+
 let theadArray = Object.keys(userData[0])
 let trh = thead.insertRow();
 
@@ -66,10 +67,11 @@ function dynamicSort(ele) {
     }
 }
 
-function showAlert(message) {
+function showAlert(message, className) {
     let div = document.createElement('div')
     div.className = "alert"
     div.style.backgroundColor = "red"
+    div.style.color = "white"
 
     div.appendChild(document.createTextNode((message)))
 
@@ -97,7 +99,7 @@ submit.addEventListener('click', function (e) {
 
 
     if (firstname.value === "" || lastname.value === "" || uid.value === "") {
-        showAlert("please fill all fields", "danger")
+        showAlert("please fill all fields", "alert")
     }
     else {
         if (selectedRow === null) {
@@ -112,13 +114,8 @@ submit.addEventListener('click', function (e) {
             <td>${city.value}</td>
             <td>${postalCode.value}</td>
             <td>${phoneNumber.value}</td>
-            <td>${position.value}</td>
-            
-                           
+            <td>${position.value}</td>                        
             `;
-
-            {/* <button class="edit">edit</button>
-        <button class="delete">delete</button></td> */}
 
             userList.appendChild(row)
             selectedRow = null
@@ -133,7 +130,8 @@ submit.addEventListener('click', function (e) {
             update.postalCode = postalCode.value;
             update.phoneNumber = phoneNumber.value;
             update.position = position.value
-
+            console.log(userData);
+            console.log(phoneNumber.value);
             tableBodyGenerator(userData)
 
             selectedRow = null;
@@ -173,8 +171,13 @@ deleteBtn.addEventListener("click", function (e) {
     tableBodyGenerator(deleteUser)
 
     selectedRow = null;
-
-
+    uid.value = ""
+    firstname.value = ""
+    lastname.value = ""
+    city.value = ""
+    postalCode.value = ""
+    phoneNumber.value = ""
+    position.value = ""
 
 })
 
@@ -188,8 +191,8 @@ userList.addEventListener("click", function (e) {
     lastname.value = selectedRow.children[2].textContent
     city.value = selectedRow.children[3].textContent
     postalCode.value = selectedRow.children[4].textContent
-    position.value = selectedRow.children[5].textContent
-
+    phoneNumber.value = selectedRow.children[5].textContent
+    position.value = selectedRow.children[6].textContent
     uid.disabled = true
     firstname.disabled = true
     lastname.disabled = true
@@ -199,3 +202,191 @@ userList.addEventListener("click", function (e) {
     position.disabled = true
     submit.style.display = 'none'
 })
+///////////////////////////////
+
+
+function renderTable(sortBy = null) {
+    let thead = document.querySelector('thead')
+    let tbody = document.querySelector('tbody')
+    let users = [...userData]
+
+    tbody.innerHTML = ""
+    thead.innerHTML = ""
+
+
+    if (!!sortBy) {
+        users.sort((a, b) => {
+            const current = a[sortBy].toString()
+            const next = b[sortBy].toString()
+            next.localCompare(current, undefined, { numeric: true, sensitivity: 'base' })
+        })
+    }
+
+
+    if (userData.length === 0) return;
+
+    let tablalecolumns = ['row', ...Object.keys(users[0])].map(column => {
+        if (column === 'row') {
+            return `<td>${column}</td>`
+        }
+        return `<th onclick="renderTable("${column}")">${column}</th>`
+    }).join('')
+
+    thead.innerHTML = `<tr>${tablalecolumns}</tr>`
+
+    for (const [index, user] of users.entries()) {
+        tbody.innerHTML +=
+            `<tr onclick=renderReadUser('${user.uid}')>
+                <td>${index + 1}</td>
+                <td>${user.uid}</td>
+                <td>${firstname.uid}</td>
+                <td>${lastname.uid}</td>
+                <td>${city.uid}</td>
+                <td>${postalCode.uid}</td>
+                <td>${phoneNumber.uid}</td>
+                <td>${position.uid}</td>
+            </tr>`
+    }
+}
+
+renderTable()
+let modal = document.querySelector('#modal')
+let creatButton = document.querySelector('#create-button')
+let closeButton = document.querySelector('#close-button')
+
+function openModal() {
+    modal.style.display = 'block'
+}
+
+function closeModal() {
+    modal.style.display = 'none'
+}
+
+function resetModal() {
+    modalBody.innerHTML = ""
+    modalFooter.innerHTML = ""
+    modalHeader.innerHTML = ""
+}
+
+closeButton.onclick = closeModal;
+
+function renderReadUser(uid) {
+    const user = userData.find(user => user.uid === uid)
+
+    resetModal()
+
+    modalHeader.textContent = 'user info'
+
+    modalBody.innerHTML = Object.keys(user).map(property => `<p>${property}: ${user[property]}</p>`).join('')
+
+    modalFooter.innerHTML = `
+        <button onclick='renderUpdateUser(${uid})'>update</button>
+        <button onclick="deleteUser(${uid})>delete</button>
+    `
+}
+
+
+
+
+
+function deleteUser(uid) {
+    const user = userData.find(user => user.uid === uid)
+
+    userData = userData.filter(item => item.uid !== user.uid)
+
+
+    renderTable()
+    closeModal()
+}
+
+function renderUpdateUser(uid) {
+    resetModal()
+    const user = userData.find(user => user.uid === uid)
+
+    modalHeader.textContent = 'updae user'
+
+    modalBody.innerHTML = Object.keys(user)
+        .map(property => {
+            if (property === 'uid') {
+                return (`<input type="text" id="${property}" class="updateInput" value="${user[property]}" disabled></input>`).join('')
+            }
+
+
+            return (`<input type="text" id="${property}" class="updateInput" value="${user[property]}"></input>`).join('')
+
+        })
+    modalFooter.innerHTML = `
+            <button onclick='updateUser(${uid})'>save</button>
+            <button onclick='renderUpdateUser(${uid})cancle</button>
+        `
+
+}
+
+
+function updateUser() {
+    const user = userData.find(user => user.uid === uid)
+
+    const updateInputs = document.querySelectorAll('.updateInputs')
+
+    for (const input of updateInputs) {
+        if (input.value.trim() === "") return "invalid input"
+
+        if (input.uid == 'uid') {
+            user[input.id] = Number(input.value)
+            continue;
+        }
+
+
+        user[input.id] = input.value
+    }
+    closeModal()
+    renderTable()
+}
+
+function renderCreateUser() {
+    resetModal()
+    modalHeader.textContent = 'create user'
+
+    modalBody.innerHTML = Object.keys(userData[0])
+        .map(property => {
+            (`<input type="text" id="${property}" class="createInput"></input>`).join('')
+
+        })
+    modalFooter.innerHTML = `
+            <button onclick='createUser(${uid})'>save</button>
+            <button onclick='modalClose()'>cancle</button>
+        `
+    openModal()
+}
+
+
+function createeUser() {
+
+    const createInputs = document.querySelectorAll('createInputs')
+    const newUserUid = Number(document.querySelector('input#uid').value)
+
+    const doplicate = userData.find(user => user.uid === newUserUid)
+
+    if (!!doplicate) return "invalid input"
+
+    const newUser = {}
+
+    for (const input of createInputs) {
+        if (input.value.trim() === "") return "invalid input"
+
+
+        if (input.uid == 'uid') {
+            newUser[input.id] = Number(input.value)
+            continue;
+        }
+        newUser[input.id] = input.value
+    }
+
+    userData.push(newUser)
+
+    closeModal()
+    renderTable()
+}
+
+
+
